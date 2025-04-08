@@ -1,0 +1,31 @@
+@mixin box($bg-color: red, $w: 200px, $h: 200px) {
+    background-color: $bg-color;
+    width: $w;
+    height: $h;
+}
+$size-s: 650px;
+$size-m: 726px;
+$size-m-l: 1000px;
+$size-l: 1200px;
+$size-xl: 1324px;
+
+@mixin mq($size: 'm') {
+    @if $size == 's' {
+        $size: $size-s;
+    } @else if $size == 'm' {
+        $size: $size-m;
+    } @else if $size == 'm-l'{
+        $size: $size-m-l;
+    }@else if $size == 'l' {
+        $size: $size-l;
+    } @else if $size == 'xl' {
+        $size: $size-xl;
+    } @else {
+        $size: $size;
+    }
+
+    @media screen and (min-width: $size) {
+        @content;
+    }
+
+}
